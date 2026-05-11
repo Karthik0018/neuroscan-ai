@@ -9,3 +9,4 @@ supabase==2.3.0
 requests==2.31.0
 protobuf==3.20.3
 h5py==3.9.0
+scipy==1.11.4
