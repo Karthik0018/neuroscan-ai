@@ -6,7 +6,4 @@ Pillow==10.1.0
 gunicorn==21.2.0
 python-dotenv==1.0.0
 supabase==2.3.0
-<<<<<<< HEAD
 requests==2.31.0
-=======
->>>>>>> 9d32f239be0c87b2e0ad662cf7ad99cf5ab6fe44
