@@ -5,7 +5,7 @@ import requests
 def is_render_environment():
     """Check if we're running on Render."""
     # Render sets these environment variables
-    return os.environ.get('RENDER', False) or \
+    return os.environ.get('RENDER', True) or \
            os.environ.get('RENDER_EXTERNAL_URL') is not None or \
            os.path.exists('/opt/render')
 
@@ -23,7 +23,7 @@ def download_model():
     print("🌐 Render environment detected - downloading model...")
     
     # Your Google Drive File ID - REPLACE THIS
-    FILE_ID = "YOUR_GOOGLE_DRIVE_FILE_ID"  # <-- CHANGE THIS
+    FILE_ID = "13MpZFvunle0qHrl1z4iv0XYGKBV5pteB"  # <-- CHANGE THIS
     
     MODEL_DIR = "models"
     MODEL_PATH = os.path.join(MODEL_DIR, "VGG16_best.h5")
