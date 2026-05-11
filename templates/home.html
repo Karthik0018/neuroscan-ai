@@ -1,0 +1,383 @@
+<!-- templates/home.html -->
+{% extends "base.html" %}
+{% block title %}NeuroScan AI - Brain Tumor Detection{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+        <div class="row align-items-center" style="min-height: calc(100vh - 140px);">
+            <!-- Left Content -->
+            <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
+                <h1 class="hero-title">
+                    Advanced <span class="text-gradient">Brain Tumor</span><br>Detection
+                </h1>
+                <p class="hero-subtitle">
+                    Utilizing state-of-the-art deep learning models to analyze MRI scans 
+                    and detect brain tumors with high accuracy. Early detection saves lives.
+                </p>
+                <div class="hero-buttons">
+                    {% if 'user_id' in session %}
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg rounded-pill px-4">
+                        <i class="fas fa-stethoscope me-2"></i>Analyze MRI
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg rounded-pill px-4 me-3">
+                        <i class="fas fa-stethoscope me-2"></i>Get Started
+                    </a>
+                    {% endif %}
+                    <a href="{{ url_for('methodology') }}" class="btn btn-outline-light btn-lg rounded-pill px-4">
+                        <i class="fas fa-book-medical me-2"></i>Learn More
+                    </a>
+                </div>
+                
+                <!-- Stats -->
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="300">
+                    <div class="row">
+                        <div class="col-4 stat-item">
+                            <h3 class="stat-number">92.6%</h3>
+                            <p class="stat-label">Detection Accuracy</p>
+                        </div>
+                        <div class="col-4 stat-item">
+                            <h3 class="stat-number">7,200+</h3>
+                            <p class="stat-label">MRI Images Trained</p>
+                        </div>
+                        <div class="col-4 stat-item">
+                            <h3 class="stat-number">3</h3>
+                            <p class="stat-label">Tumor Types Detected</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Right Animation -->
+            <div class="col-lg-5 d-none d-lg-flex align-items-center justify-content-center" 
+                 data-aos="fade-left" data-aos-duration="1200">
+                <div class="hero-image-container">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-brain fa-2x"></i>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-microscope fa-2x"></i>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-heartbeat fa-2x"></i>
+                    </div>
+                    <div class="main-circle">
+                        <i class="fas fa-shield-virus fa-5x"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
+            <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,60 1440,40 L1440,120 L0,120 Z" fill="#f8f9fa"></path>
+        </svg>
+    </div>
+</section>
+
+<!-- Understanding Brain Health Section -->
+<section class="brain-health-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <span class="section-badge">Brain Health</span>
+            <h2 class="section-title">Understanding Your Brain</h2>
+            <p class="section-subtitle">The brain is the most complex organ in the human body</p>
+        </div>
+        
+        <!-- Brain Info Cards -->
+        <div class="row g-4 mb-5">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="brain-info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Brain Structure</h4>
+                    <p>The brain consists of the cerebrum, cerebellum, and brainstem, each controlling different functions from movement to vital processes.</p>
+                    <ul class="info-list">
+                        <li>Weighs about 1.4 kg</li>
+                        <li>Contains 86 billion neurons</li>
+                        <li>Uses 20% of body's oxygen</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="brain-info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Brain Functions</h4>
+                    <p>Controls thoughts, memory, emotion, touch, motor skills, vision, breathing, temperature, and every process regulating our body.</p>
+                    <ul class="info-list">
+                        <li>Cognitive processing</li>
+                        <li>Motor control</li>
+                        <li>Sensory processing</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="brain-info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Brain Protection</h4>
+                    <p>Protected by the skull, meninges (three layers of membranes), and cerebrospinal fluid that cushions against impacts.</p>
+                    <ul class="info-list">
+                        <li>Blood-brain barrier</li>
+                        <li>Cerebrospinal fluid</li>
+                        <li>Meningeal layers</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="brain-info-card">
+                    <div class="card-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>Brain Health Tips</h4>
+                    <p>Maintain brain health through proper nutrition, regular exercise, adequate sleep, and mental stimulation activities.</p>
+                    <ul class="info-list">
+                        <li>Exercise regularly</li>
+                        <li>Quality sleep (7-9 hours)</li>
+                        <li>Mediterranean diet</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brain Diseases Section -->
+<section class="diseases-section py-5 bg-gradient-light">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <span class="section-badge">Brain Disorders</span>
+            <h2 class="section-title">Common Brain Diseases & Disorders</h2>
+            <p class="section-subtitle">Understanding different neurological conditions</p>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="disease-card">
+                    <div class="disease-img">
+                        <img src="https://static.vecteezy.com/system/resources/previews/011/427/208/non_2x/patient-with-thought-bubble-and-doctor-examining-brain-alzheimer-disease-and-dementia-dotage-and-memory-loss-concept-on-white-background-flat-modern-illustration-vector.jpg" alt="Alzheimer's">
+                        <div class="disease-overlay">
+                            <span class="disease-tag">Neurodegenerative</span>
+                        </div>
+                    </div>
+                    <div class="disease-content">
+                        <h4>Alzheimer's Disease</h4>
+                        <p>A progressive neurological disorder causing brain cell death, leading to memory loss and cognitive decline. Affects millions worldwide.</p>
+                        <div class="disease-stats">
+                            <span><i class="fas fa-users me-1"></i> 55M+ affected globally</span>
+                            <span class="text-muted small">Source: WHO, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="disease-card">
+                    <div class="disease-img">
+                        <img src="https://media.sciencephoto.com/f0/35/27/14/f0352714-800px-wm.jpg" alt="Stroke">
+                        <div class="disease-overlay">
+                            <span class="disease-tag">Vascular</span>
+                        </div>
+                    </div>
+                    <div class="disease-content">
+                        <h4>Stroke (Cerebrovascular Accident)</h4>
+                        <p>Occurs when blood supply to the brain is interrupted, causing brain cells to die. Leading cause of disability worldwide.</p>
+                        <div class="disease-stats">
+                            <span><i class="fas fa-users me-1"></i> 15M cases annually</span>
+                            <span class="text-muted small">Source: WHO, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="disease-card">
+                    <div class="disease-img">
+                        <img src="https://cbx-prod.b-cdn.net/COLOURBOX62463734.jpg?width=800&height=800&quality=70" alt="Epilepsy">
+                        <div class="disease-overlay">
+                            <span class="disease-tag">Neurological</span>
+                        </div>
+                    </div>
+                    <div class="disease-content">
+                        <h4>Epilepsy</h4>
+                        <p>A chronic neurological disorder characterized by recurrent seizures due to abnormal electrical activity in the brain.</p>
+                        <div class="disease-stats">
+                            <span><i class="fas fa-users me-1"></i> 50M people affected</span>
+                            <span class="text-muted small">Source: WHO, 2023</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Brain Tumors Section -->
+<section class="tumors-section py-5">
+    <div class="container">
+        <div class="section-header text-center mb-5" data-aos="fade-up">
+            <span class="section-badge">Brain Tumors</span>
+            <h2 class="section-title">Understanding Brain Tumors</h2>
+            <p class="section-subtitle">What you need to know about brain tumors - from trusted medical sources</p>
+        </div>
+        
+        <!-- What is a Brain Tumor? -->
+        <div class="row align-items-center mb-5" data-aos="fade-up">
+            <div class="col-lg-6 mb-4">
+                <img src="https://www.massgeneralbrigham.org/content/mgb-global/global/en/about/newsroom/articles/confronting-brain-cancer/_jcr_content/root/container_1214295969/image.coreimg.jpeg/1732049471207/brain-tumor-examination-2200x1200.jpeg" alt="Brain Tumor" class="img-fluid rounded-4 shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3 class="mb-3">What is a Brain Tumor?</h3>
+                <p class="lead">A brain tumor is an abnormal growth of cells within the brain or the central spinal canal.</p>
+                <p>According to the <strong>American Brain Tumor Association</strong>, brain tumors can be benign (non-cancerous) or malignant (cancerous). The rigid structure of the skull means any abnormal growth can increase intracranial pressure, potentially leading to severe neurological damage.</p>
+                <div class="alert alert-info border-0 rounded-4">
+                    <i class="fas fa-info-circle me-2"></i>
+                    <strong>Key Fact:</strong> Early detection and accurate classification of brain tumors are critical for selecting appropriate treatment strategies and improving patient outcomes.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tumor Types Slider -->
+        <h3 class="text-center mb-4" data-aos="fade-up">Types of Brain Tumors We Detect</h3>
+        <div class="row g-4 tumor-types-container">
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="tumor-card glioma-card">
+                    <div class="tumor-icon-wrapper">
+                        <i class="fas fa-dna"></i>
+                    </div>
+                    <h4>Glioma</h4>
+                    <p class="tumor-origin">Origin: Glial Cells</p>
+                    <p class="tumor-desc">Tumors originating in the glial cells that surround and support neurons. Includes astrocytomas, oligodendrogliomas, and glioblastomas.</p>
+                    <div class="tumor-info">
+                        <span class="badge bg-primary">Primary Brain Tumor</span>
+                        <span class="badge bg-info">Can be aggressive</span>
+                    </div>
+                    <p class="tumor-source mt-2"><small>Source: National Cancer Institute (NCI)</small></p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="tumor-card meningioma-card">
+                    <div class="tumor-icon-wrapper">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h4>Meningioma</h4>
+                    <p class="tumor-origin">Origin: Meninges</p>
+                    <p class="tumor-desc">Tumors forming on the membranes covering the brain and spinal cord. Most meningiomas are benign and slow-growing.</p>
+                    <div class="tumor-info">
+                        <span class="badge bg-success">Mostly Benign</span>
+                        <span class="badge bg-info">Common in women</span>
+                    </div>
+                    <p class="tumor-source mt-2"><small>Source: American Association of Neurological Surgeons</small></p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="tumor-card pituitary-card">
+                    <div class="tumor-icon-wrapper">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h4>Pituitary Tumor</h4>
+                    <p class="tumor-origin">Origin: Pituitary Gland</p>
+                    <p class="tumor-desc">Abnormal growths in the pituitary gland at the base of the brain. Can affect hormone production and cause various symptoms.</p>
+                    <div class="tumor-info">
+                        <span class="badge bg-warning">Hormone Effects</span>
+                        <span class="badge bg-info">Usually benign</span>
+                    </div>
+                    <p class="tumor-source mt-2"><small>Source: National Institutes of Health (NIH)</small></p>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="tumor-card notumor-card">
+                    <div class="tumor-icon-wrapper">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h4>No Tumor</h4>
+                    <p class="tumor-origin">Normal Brain Scan</p>
+                    <p class="tumor-desc">MRI scans showing no evidence of brain tumors. Regular check-ups are still recommended for preventive health.</p>
+                    <div class="tumor-info">
+                        <span class="badge bg-success">Healthy</span>
+                        <span class="badge bg-info">Preventive care</span>
+                    </div>
+                    <p class="tumor-source mt-2"><small>Regular screening recommended</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Warning Banner -->
+<section class="warning-section py-4" data-aos="fade-up">
+    <div class="container">
+        <div class="warning-banner">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-triangle fa-3x me-3 text-warning"></i>
+                <div>
+                    <h5 class="mb-1">⚠️ IMPORTANT MEDICAL DISCLAIMER</h5>
+                    <p class="mb-0">This tool is for educational and research purposes only. It should NOT be used as a substitute for professional medical diagnosis. Always consult a qualified healthcare provider. <strong>Do not self-diagnose or self-treat based on these results.</strong></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action Section -->
+<section class="cta-section py-5">
+    <div class="container text-center" data-aos="zoom-in">
+        {% if 'user_id' in session %}
+            <!-- ===== LOGGED IN USER CTA ===== -->
+            <div class="cta-logged-in">
+                <div class="mb-3">
+                    <span class="badge bg-success rounded-pill px-3 py-2 mb-2">
+                        <i class="fas fa-check-circle me-1"></i> You are logged in
+                    </span>
+                </div>
+                <h2 class="mb-3">
+                    Welcome Back, <span style="color: #4A90D9;">{{ session['username'] }}</span>! 👋
+                </h2>
+                <p class="mb-4">
+                    Ready to analyze your MRI scan? Get AI-powered insights instantly with our advanced deep learning model.
+                </p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                    <a href="{{ url_for('predict') }}" class="btn btn-primary btn-lg rounded-pill px-5">
+                        <i class="fas fa-stethoscope me-2"></i>Predict Now
+                    </a>
+                    <a href="{{ url_for('methodology') }}" class="btn btn-outline-primary btn-lg rounded-pill px-4">
+                        <i class="fas fa-book-medical me-2"></i>How It Works
+                    </a>
+                </div>
+                <p class="text-muted small mt-3">
+                    <i class="fas fa-shield-alt me-1"></i> Your data is secure and private
+                </p>
+            </div>
+        {% else %}
+            <!-- ===== GUEST USER CTA ===== -->
+            <h2 class="mb-3">Ready to Analyze Your MRI?</h2>
+            <p class="mb-4">
+                Upload your MRI scan and get AI-powered insights instantly. 
+                <br class="d-none d-md-block">
+                Early detection can make a difference.
+            </p>
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg rounded-pill px-5">
+                    <i class="fas fa-user-plus me-2"></i>Register Now
+                </a>
+                <a href="{{ url_for('login') }}" class="btn btn-outline-primary btn-lg rounded-pill px-5">
+                    <i class="fas fa-sign-in-alt me-2"></i>Login
+                </a>
+            </div>
+            <p class="text-muted small mt-3">
+                <i class="fas fa-lock me-1"></i> Free registration • No credit card required
+            </p>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,14 @@
+﻿services:
+  - type: web
+    name: neuroscan-ai
+    env: python
+    region: oregon
+    buildCommand: pip install -r requirements.txt && python download_model.py
+    startCommand: gunicorn app:app --bind 0.0.0.0:\ --timeout 120
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.12
+      - key: RENDER
+        value: true
+      - key: FLASK_ENV
+        value: production
