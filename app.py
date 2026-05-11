@@ -14,9 +14,10 @@ import tensorflow as tf
 from tensorflow import keras
 from supabase import create_client, Client
 from dotenv import load_dotenv
+# Add this right after your existing imports at the top of app.py
+from download_model import download_model, is_render_environment
 
-# Load environment variables
-load_dotenv()
+
 
 # ============================================================
 # FLASK APP CONFIGURATION
@@ -52,7 +53,15 @@ supabase_admin = get_supabase_admin()
 # MODEL LOADING
 # ============================================================
 CLASSES = ['glioma', 'meningioma', 'notumor', 'pituitary']
-
+# Add this BEFORE the model loading section
+# Auto-download model on Render only
+if is_render_environment():
+    print("🌐 Render environment - checking model...")
+    download_model()
+else:
+    print("💻 Local environment - using existing model")
+# Load environment variables
+load_dotenv()
 # Disease information dictionary
 DISEASE_INFO = {
     'glioma': {
