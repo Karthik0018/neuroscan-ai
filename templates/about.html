@@ -1,0 +1,134 @@
+<!-- templates/about.html -->
+{% extends "base.html" %}
+{% block title %}About Us - NeuroScan AI{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8" data-aos="fade-right">
+                <h1 class="page-title">About NeuroScan AI</h1>
+                <p class="lead">Revolutionizing brain tumor detection through artificial intelligence</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="about-content py-5">
+    <div class="container">
+        <!-- Project Overview -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-lg-6 mb-4">
+                <img src="https://www.shutterstock.com/image-photo/aipowered-medical-interface-on-tablet-600nw-2604063441.jpg" alt="AI in Healthcare" class="img-fluid rounded-4 shadow">
+            </div>
+            <div class="col-lg-6">
+                <h3>Our Mission</h3>
+                <p>NeuroScan AI is a cutting-edge deep learning project designed to assist in the early detection and classification of brain tumors from MRI scans. Our tool uses advanced neural network architectures to analyze medical images and identify potential tumors with high accuracy.</p>
+                <p>This project represents the intersection of artificial intelligence and healthcare, demonstrating how machine learning can support medical professionals in making faster, more accurate diagnoses.</p>
+                <div class="alert alert-warning border-0 rounded-4">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    <strong>Important:</strong> This is a research and educational tool. Always seek professional medical advice.
+                </div>
+            </div>
+        </div>
+        
+        <!-- Technology Stack -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-12">
+                <h3 class="text-center mb-4">Technology Stack</h3>
+                <div class="row g-4">
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fab fa-python fa-3x mb-2"></i>
+                            <h6>Python</h6>
+                            <small>Core Language</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fas fa-brain fa-3x mb-2"></i>
+                            <h6>TensorFlow</h6>
+                            <small>Deep Learning</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fas fa-server fa-3x mb-2"></i>
+                            <h6>Flask</h6>
+                            <small>Web Framework</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fas fa-database fa-3x mb-2"></i>
+                            <h6>SQLite</h6>
+                            <small>Database</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fab fa-bootstrap fa-3x mb-2"></i>
+                            <h6>Bootstrap 5</h6>
+                            <small>Frontend</small>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-4 col-6">
+                        <div class="tech-card">
+                            <i class="fas fa-chart-bar fa-3x mb-2"></i>
+                            <h6>Chart.js</h6>
+                            <small>Visualization</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dataset Information -->
+        <div class="row" data-aos="fade-up">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <h3 class="mb-3">Dataset Information</h3>
+                    <p>Our model is trained on a curated dataset of <strong>7,200 brain MRI images</strong> from multiple trusted sources:</p>
+                    <ul>
+                        <li><strong>Figshare Brain MRI Dataset</strong> - Public research dataset</li>
+                        <li><strong>SARTAJ Dataset</strong> - Brain tumor classification MRI</li>
+                        <li><strong>Br35H Dataset</strong> - Brain tumor detection collection</li>
+                    </ul>
+                    <h5>Dataset Distribution:</h5>
+                    <table class="table table-hover">
+                        <thead class="table-dark">
+                            <tr>
+                                <th>Class</th>
+                                <th>Training Images</th>
+                                <th>Testing Images</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Glioma</td><td>1,400</td><td>400</td></tr>
+                            <tr><td>Meningioma</td><td>1,400</td><td>400</td></tr>
+                            <tr><td>No Tumor</td><td>1,400</td><td>400</td></tr>
+                            <tr><td>Pituitary</td><td>1,400</td><td>400</td></tr>
+                            <tr class="table-secondary"><td><strong>Total</strong></td><td><strong>5,600</strong></td><td><strong>1,600</strong></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Warning Section -->
+<section class="warning-section py-4" data-aos="fade-up">
+    <div class="container">
+        <div class="warning-banner">
+            <div class="d-flex align-items-center">
+                <i class="fas fa-exclamation-triangle fa-3x me-3 text-warning"></i>
+                <div>
+                    <h5 class="mb-1">⚠️ MEDICAL DISCLAIMER</h5>
+                    <p class="mb-0">NeuroScan AI is an educational tool. Results are not 100% accurate. Always consult a qualified neurologist or radiologist for proper diagnosis.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

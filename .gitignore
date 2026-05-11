@@ -1,0 +1,12 @@
+
+# Environment
+.env
+.env.local
+
+# Supabase
+supabase/
+.migrations/
+
+# Database
+instance/
+

@@ -1,0 +1,124 @@
+<!-- templates/methodology.html -->
+{% extends "base.html" %}
+{% block title %}Methodology - NeuroScan AI{% endblock %}
+
+{% block content %}
+<section class="page-header py-5">
+    <div class="container">
+        <h1 class="page-title" data-aos="fade-right">Our Methodology</h1>
+        <p class="lead" data-aos="fade-right" data-aos-delay="100">How we built the brain tumor detection system</p>
+    </div>
+</section>
+
+<section class="methodology-content py-5">
+    <div class="container">
+        <!-- Process Overview -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-12">
+                <h3 class="mb-4">Development Process</h3>
+                <div class="process-timeline">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h5>Data Collection & Cleaning</h5>
+                            <p>Collected 7,200 MRI images from Kaggle. Removed duplicates, balanced classes, and eliminated overlap between training/testing sets.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h5>Data Preprocessing</h5>
+                            <p>Resized images to 128×128, applied normalization (0-1 scaling), and implemented data augmentation techniques.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h5>Model Architecture</h5>
+                            <p>Implemented and compared 6 deep learning models including CNN, VGG16, ResNet50, EfficientNetB0, and MobileNetV2.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h5>Training & Evaluation</h5>
+                            <p>Trained models with class weighting, early stopping, and learning rate reduction. VGG16 achieved 92.6% accuracy.</p>
+                        </div>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">5</div>
+                        <div class="step-content">
+                            <h5>Deployment</h5>
+                            <p>Deployed the best model (VGG16) using Flask web framework with a responsive Bootstrap frontend.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Model Comparison -->
+        <div class="row mb-5" data-aos="fade-up">
+            <div class="col-12">
+                <h3 class="mb-4">Model Performance Comparison</h3>
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <canvas id="modelComparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+        
+        <!-- VGG16 Details -->
+        <div class="row" data-aos="fade-up">
+            <div class="col-12">
+                <div class="card border-0 shadow-sm rounded-4 p-4">
+                    <h3 class="mb-3">Why VGG16?</h3>
+                    <p>VGG16 was selected as our primary model because:</p>
+                    <ul>
+                        <li><strong>Highest Accuracy:</strong> 92.62% on test set</li>
+                        <li><strong>Transfer Learning:</strong> Pre-trained on ImageNet, reducing training time</li>
+                        <li><strong>Deep Architecture:</strong> 16-layer network captures complex patterns</li>
+                        <li><strong>Reliable Performance:</strong> Consistent across all tumor types</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const ctx = document.getElementById('modelComparisonChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Basic CNN', 'Custom CNN', 'VGG16', 'ResNet50', 'EfficientNetB0', 'MobileNetV2'],
+            datasets: [{
+                label: 'Accuracy (%)',
+                data: [69.56, 74.00, 92.62, 71.25, 80.31, 90.00],
+                backgroundColor: [
+                    '#3498db', '#3498db', '#27ae60', '#3498db', '#3498db', '#27ae60'
+                ],
+                borderColor: '#2c3e50',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: { display: true, text: 'Model Accuracy Comparison' }
+            },
+            scales: {
+                y: {
+                    beginAtZero: false,
+                    min: 60,
+                    max: 100,
+                    ticks: { callback: function(value) { return value + '%'; } }
+                }
+            }
+        }
+    });
+});
+</script>
+{% endblock %}
